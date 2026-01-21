@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html>
+
+<body>
+    <!-- Loading the specific image provided by the user -->
+    <img id="img"
+        src="file:///Users/ethan/.gemini/antigravity/brain/7020f79d-96b4-410e-9028-2258d47ce811/uploaded_image_1768951839055.png"
+        style="display:none;">
+    <canvas id="c"></canvas>
+    <script>
+        const img = document.getElementById('img');
+        img.onload = () => {
+            const c = document.getElementById('c');
+            const ctx = c.getContext('2d');
+            c.width = img.width;
+            c.height = img.height;
+            ctx.drawImage(img, 0, 0);
+
+            const width = img.width;
+            const y = Math.floor(img.height / 2);
+            const colors = [];
+
+            // Sample repeatedly across the width
+            for (let i = 1; i <= 20; i++) {
+                const x = Math.floor(width * i / 22);
+                const p = ctx.getImageData(x, y, 1, 1).data;
+                const hex = "#" + ("000000" + ((p[0] << 16) | (p[1] << 8) | p[2]).toString(16)).slice(-6);
+                colors.push(hex);
+            }
+            // Filter consecutive duplicates to find bands
+            const unique = [];
+            if (colors.length > 0) unique.push(colors[0]);
+
+            for (let i = 1; i < colors.length; i++) {
+                if (colors[i] !== unique[unique.length - 1]) {
+                    unique.push(colors[i]);
+                }
+            }
+
+            console.log("EXTRACTED_COLORS:", unique);
+            document.body.innerText = "COLORS: " + JSON.stringify(unique);
+        }
+    </script>
+</body>
+
+</html>

@@ -1,0 +1,176 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Ethan's Link-in-Bio</title>
+    <style>
+        :root {
+            /* Custom Extracted Palette */
+            --color-dark: #ddd6c1;
+            --color-mid: #eee8d5;
+            --color-light: #fdf6e3;
+
+            /* Derived Colors for Contrast */
+            --text-main: #4a4538;
+            /* Dark brown for contrast against beige */
+            --text-accent: #2c2921;
+
+            --glass-bg: rgba(253, 246, 227, 0.4);
+            /* color-light */
+            --glass-border: rgba(164, 159, 143, 0.3);
+            /* color-dark */
+
+            --button-bg: rgba(238, 232, 213, 0.6);
+            /* color-mid */
+            --button-hover: rgba(253, 246, 227, 0.8);
+
+            --shadow: 0 8px 32px 0 rgba(74, 69, 56, 0.1);
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Inter', -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+            background: linear-gradient(135deg, var(--color-light) 0%, var(--color-mid) 100%);
+            min-height: 100vh;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            overflow: hidden;
+            position: relative;
+        }
+
+        /* Animated Mesh Gradient Background */
+        body::before {
+            content: '';
+            position: absolute;
+            top: -50%;
+            left: -50%;
+            width: 200%;
+            height: 200%;
+            background: radial-gradient(circle at center, var(--color-dark) 0%, var(--color-mid) 100%);
+            opacity: 0.6;
+            animation: gradient-animation 15s ease infinite alternate;
+            z-index: -1;
+        }
+
+        @keyframes gradient-animation {
+            0% {
+                transform: rotate(0deg);
+            }
+
+            100% {
+                transform: rotate(360deg);
+            }
+        }
+
+        .container {
+            background: var(--glass-bg);
+            backdrop-filter: blur(16px);
+            -webkit-backdrop-filter: blur(16px);
+            border: 1px solid var(--glass-border);
+            border-radius: 24px;
+            padding: 3rem 2rem;
+            width: 90%;
+            max-width: 400px;
+            text-align: center;
+            box-shadow: var(--shadow);
+            z-index: 10;
+            transition: transform 0.3s ease;
+        }
+
+        .container:hover {
+            transform: translateY(-5px);
+        }
+
+        .profile-pic {
+            width: 120px;
+            height: 120px;
+            border-radius: 50%;
+            object-fit: cover;
+            border: 4px solid rgba(255, 255, 255, 0.3);
+            margin-bottom: 1.5rem;
+            background-color: #fff;
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+        }
+
+        h1 {
+            color: var(--text-accent);
+            font-size: 1.8rem;
+            margin-bottom: 0.5rem;
+            font-weight: 700;
+            text-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+        }
+
+        .bio {
+            color: var(--text-main);
+            font-size: 1rem;
+            margin-bottom: 2rem;
+            line-height: 1.5;
+        }
+
+        .links {
+            display: flex;
+            flex-direction: column;
+            gap: 1rem;
+        }
+
+        .link-btn {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            background: var(--button-bg);
+            color: var(--text-main);
+            text-decoration: none;
+            padding: 1rem;
+            border-radius: 12px;
+            border: 1px solid var(--glass-border);
+            transition: all 0.3s ease;
+            font-weight: 600;
+            backdrop-filter: blur(4px);
+        }
+
+        .link-btn:hover {
+            background: var(--button-hover);
+            transform: scale(1.02);
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+        }
+
+        .link-btn:active {
+            transform: scale(0.98);
+        }
+
+        @media (max-width: 480px) {
+            .container {
+                width: 85%;
+                padding: 2rem 1.5rem;
+            }
+        }
+    </style>
+    <!-- Google Fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&display=swap" rel="stylesheet">
+</head>
+
+<body>
+    <div class="container">
+        <img src="/Users/ethan/Downloads/Photo from Google Photos (5).JPG" alt="Profile Picture" class="profile-pic">
+        <h1>Ethan Vu</h1>
+        <p class="bio">Teehee | Boi | Chez </p>
+
+        <div class="links">
+            <a href="tel:650-609-8625" target="_blank" class="link-btn">650-609-8625</a>
+            <a href="https://www.instagram.com/ethn________?igsh=NTc4MTIwNjQ2YQ%3D%3D&utm_source=qr" target="_blank"
+                class="link-btn">Instagram</a>
+            <a href="https://www.kalipsorobotics.com/" target="_blank" class="link-btn">Kalipso Robotics</a>
+            <a href="https://github.com/Ethan2502" target="_blank" class="link-btn">GitHub</a>
+        </div>
+    </div>
+</body>
+
+</html>
